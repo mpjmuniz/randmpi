@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#gera uma biblioteca compartilhada do código
+python -m compileall ./src/
+
+#numero de cores numa maquina linux
+numCores="$(grep -c ^processor /proc/cpuinfo)"
+
+#se o usuário especificou a entrada, executá-la, obtendo seu tempo de execução
+if [[ ! -z $1 ]]; then
+	#time: obtem tempo de execução
+	# mpiexec executa vários processos em paralelo
+	# grep: extrai padrão passado 
+	# |&: pipe moderninho
+	{ time mpiexec -n $numCores python $2; } |& grep real
+fi
+
+#interface: executar  <nome-arquivo>
+
+
+# TODO: aprimorar decisão de cores usando alguma lógica
