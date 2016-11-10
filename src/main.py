@@ -11,8 +11,7 @@ import math
 def getRandomList(seed, size, ub):
     random.seed(seed)
     # lista de tamanho size
-    rdList = [None] * size
-
+    rdList = []
     for slot in rdList:
         # random.uniform: retorna um número aleatório entre a e b
         rdList.append(random.uniform(a = 1, b = ub))
@@ -26,9 +25,16 @@ def isPrime(num):
     return num > 1 and all(num % i for i in range(2, int(math.sqrt(num))))
 
 #   Função responsável por escrever lista no arquivo, no formato correto
-#   TODO: escrever output formatado
-#def writeList(randomList, fileRef):
+def writeList(randomList, filePath):
+    fileRef = open(filePath, 'w+')
+    fileRef.write("%d\n" % len(randomList))
+
+    for num in randomList:
+        fileRef.write("%d " % num)
 
 #   Função responsável por ler lista do arquivo, no formato correto
 #   TODO: ler input formatado
-#def readList(fileRef):
+def readList(fileRef):
+    fileRef = open(filePath, 'r+')
+    content = fileRef.read()
+
