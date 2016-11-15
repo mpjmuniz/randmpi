@@ -14,17 +14,18 @@ def getRandomList(seed, size, ub):
     random.seed(seed)
     # lista de tamanho size
     rdList = []
-    for i in range(1, size):
+    for i in range(1, int(size)):
         # random.uniform: retorna um número aleatório entre a e b
-        rdList.append(int(random.uniform(a = 1, b = ub)))
+        rdList.append(int(random.uniform(a = 1, b = int(ub))))
 
     return rdList
 
 #   Função responsável por verificar se um dado número num é primo ou não
 #   num: número à ser verificado
 def isPrime(num):
+    n = int(num)
     # método ineficiente para verificação, mas rápido de implementar
-    return [num > 1 and all(num % i for i in range(2, int(num))), num]
+    return n > 1 and all(n % i for i in range(2, int(n)))
 
 #   Função responsável por escrever lista no arquivo, no formato correto
 #   randomList: lista à ser escrita

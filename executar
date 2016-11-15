@@ -19,3 +19,5 @@ fi
 
 
 # TODO: aprimorar decisão de cores usando alguma lógica
+# 		definir execução sequencial com interface direto do bash
+#		definir execução paralela direto do bash
