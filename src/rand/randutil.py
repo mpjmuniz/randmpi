@@ -25,8 +25,6 @@ def getRandomList(seed, size, ub):
 #   num: número à ser verificado
 def isPrime(num):
     n = int(num)
-    # método ineficiente para verificação, mas rápido de implementar
-    #return n > 1 and all(n % i for i in range(2, int(n)))
     return np.array([int(n > 1 and all(n % i for i in range(2, int(n)))), n])
     
 
