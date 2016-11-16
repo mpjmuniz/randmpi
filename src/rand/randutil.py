@@ -3,6 +3,7 @@
 
 import random
 import math
+import numpy as np
 
 #   Função responsável por criar uma lista com números aleatórios em cada uma das posições
 #   seed: semente para geração dos números
@@ -25,7 +26,9 @@ def getRandomList(seed, size, ub):
 def isPrime(num):
     n = int(num)
     # método ineficiente para verificação, mas rápido de implementar
-    return n > 1 and all(n % i for i in range(2, int(n)))
+    #return n > 1 and all(n % i for i in range(2, int(n)))
+    return np.array([int(n > 1 and all(n % i for i in range(2, int(n)))), n])
+    
 
 #   Função responsável por escrever lista no arquivo, no formato correto
 #   randomList: lista à ser escrita
