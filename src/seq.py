@@ -17,16 +17,15 @@ for i in rd_list:
     
 if rank == 0:
     for i in range(1, size):
-        status = MPI.Status()
-        comm.Recv(recv_buffer, source=MPI.ANY_SOURCE, tag=MPI.ANY_TAG, status=status)
+        comm.Recv(recv_buffer, source=MPI.ANY_SOURCE, tag=MPI.ANY_TAG)
         print("G:" + str(recv_buffer[0]) + ":" + str(recv_buffer[1]))
         if(recv_buffer[0]): #Se número é primo ou não
             prime.append(recv_buffer[1]) #NÚMERO PRIMO            
 else:
     n = rd_list.pop() #PROBLEMA AQUI ELE NÃO DÁ POP CERTO, PRECISA FAZER O ACESSO CONCORRENTE A ESSA LISTA!!!
-    n_np = ru.isPrime(i)
+    n_np = ru.isPrime(n)
     print("R:" + str(rank) + "|" + str(n) + "|" + str(n_np[0]) + ":" + str(n_np[1]))
     comm.Send(n_np, dest=0, tag=rank)
 
 if comm.rank == 0:
-    ru.writeList(prime, "output")
+    ru.writeList(prime, "primos_seq")

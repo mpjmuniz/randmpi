@@ -10,8 +10,8 @@ rd_list = ru.getRandomList(sys.argv[1], sys.argv[2], sys.argv[3])
 prime = []
 
 for i in rd_list:
-    if ru.isPrime(i):
+    if ru.isPrime(i)[0]:
         prime.append(i)
 
-ru.writeList(prime, "nums_primos")
+ru.writeList(prime, "primos_seq-proposta")
 
